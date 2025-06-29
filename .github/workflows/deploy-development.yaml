@@ -26,12 +26,10 @@ jobs:
 
       - name: Build Website with Parcel
         run: npx parcel build "./src/index.html" --dist-dir "./dist"
-
-      - name: Upload Build artifact
+      - name: Upload Build Artifact (Default Name: github-pages)
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./dist"
-          name: "build-artifact-develop"
 
   deploy-develop-job:
     needs: build-develop-job
@@ -44,5 +42,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with: 
-          artifact-name: "build-artifact-develop"
