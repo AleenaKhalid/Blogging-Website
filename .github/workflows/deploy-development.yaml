@@ -5,7 +5,7 @@ on:
     branches:
       - develop
 
-permissions:
+permissions: 
   pages: write
   id-token: write
 
@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Checkout Repository On the Runner 
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -25,6 +26,7 @@ jobs:
 
       - name: Build Website with Parcel
         run: npx parcel build "./src/index.html" --dist-dir "./dist"
+
       - name: Upload Build artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -32,7 +34,7 @@ jobs:
           name: "build-artifact-develop"
 
   deploy-develop-job:
-    needs: "build-develop-job"
+    needs: build-develop-job
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -40,7 +42,7 @@ jobs:
 
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
         with: 
           artifact-name: "build-artifact-develop"
-          token: "${{github.token}}"
