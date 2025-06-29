@@ -2,7 +2,7 @@
   "name": "blogging-website",
   "version": "1.0.0",
   "description": "A static blogging website with CI/CD and linting",
-  "main": "index.js",
+  
   "scripts": {
     "build": "parcel build src/index.html",
     "start": "parcel src/index.html",
