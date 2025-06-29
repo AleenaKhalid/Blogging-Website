@@ -11,7 +11,7 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository On the Runner 
+      - name: Checkout Repository On the Runner
       - uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
